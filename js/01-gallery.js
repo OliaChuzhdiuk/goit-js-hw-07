@@ -4,6 +4,7 @@ import { galleryItems } from './gallery-items.js';
 const galleryBoxRef = document.querySelector(".gallery");
 galleryBoxRef.innerHTML = galleryImg(galleryItems);
 galleryBoxRef.addEventListener("click", onModalOpen);
+
 let modalInstance;
 
 function galleryImg(items) {
