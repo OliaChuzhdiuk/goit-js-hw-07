@@ -5,8 +5,6 @@ const galleryBoxRef = document.querySelector(".gallery");
 galleryBoxRef.innerHTML = galleryImg(galleryItems);
 galleryBoxRef.addEventListener("click", onModalOpen);
 
-let modalInstance;
-
 function galleryImg(items) {
     return items
         .map(({ preview, original, description }) => {
@@ -29,7 +27,7 @@ function onModalOpen(event) {
         return;
     }
     event.preventDefault();
-    modalInstance = basicLightbox.create(
+    let modalInstance = basicLightbox.create(
         `<img width="1400" height="900" 
     src="${event.target.dataset.source}">`, {
             onShow: (modalInstance) => {
@@ -40,20 +38,22 @@ function onModalOpen(event) {
             },
         }
     );
+
     modalInstance.show();
-}
 
-function onEscClick(event) {
-    if (event.code === "Escape") {
-        modalInstance.close();
+    function onEscClick(event) {
+        if (event.code === "Escape") {
+            modalInstance.close();
+        }
     }
-}
 
-function addListener() {
-    window.addEventListener("keydown", onEscClick);
-}
+    function addListener() {
+        window.addEventListener("keydown", onEscClick);
+    }
 
-function removeListener() {
-    window.removeEventListener("keydown", onEscClick);
+    function removeListener() {
+        window.removeEventListener("keydown", onEscClick);
+    }
+
 }
-console.log(galleryItems)
+console.log(galleryItems);
