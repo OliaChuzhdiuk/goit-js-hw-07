@@ -39,20 +39,25 @@ function onModalOpen(event) {
         }
     );
     modalInstance.show();
-}
 
-function onEscClick(event) {
-    if (event.code === "Escape") {
-        modalInstance.close();
+    function onEscClick(event) {
+        if (event.code === "Escape") {
+            modalInstance.close();
+        }
     }
+
+    function addListener() {
+        window.addEventListener("keydown", onEscClick);
+    }
+
+    function removeListener() {
+        window.removeEventListener("keydown", onEscClick);
+    }
+
+
 }
 
-function addListener() {
-    window.addEventListener("keydown", onEscClick);
-}
 
-function removeListener() {
-    window.removeEventListener("keydown", onEscClick);
-}
+
 
 console.log(galleryItems)
